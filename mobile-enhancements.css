@@ -1,0 +1,913 @@
+/* Mobile-First Enhancements for JeninMart */
+
+/* Mobile Menu Fix */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-menu-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  max-width: 85vw;
+  background: var(--bg, #ffffff);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+}
+
+.mobile-menu.open .mobile-menu-inner {
+  transform: translateX(0);
+}
+
+.mobile-close {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--bg-soft, #f1f5f9);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-muted, #6b7280);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.mobile-close:hover {
+  background: var(--accent, #10b981);
+  color: #fff;
+}
+
+.mobile-menu-list {
+  padding: 60px 16px 16px 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.mobile-menu-list .tab-pill {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 14px 18px;
+  font-size: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text, #111827);
+  background: transparent;
+  border: 1px solid var(--border, #e5e7eb);
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-list .tab-pill:hover {
+  background: var(--accent, #10b981);
+  color: #fff;
+  border-color: var(--accent, #10b981);
+}
+
+/* Hamburger button visibility - Force display on mobile */
+.hamburger,
+.mobile-menu-btn {
+  display: none;
+}
+
+/* Force hamburger to show on mobile - Override any conflicting styles */
+@media screen and (max-width: 992px) {
+  .hamburger,
+  .mobile-menu-btn,
+  #hamburger {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile hamburger button styles */
+@media screen and (max-width: 992px) {
+  .hamburger,
+  .mobile-menu-btn,
+  button.hamburger,
+  button.mobile-menu-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: #ffffff !important;
+    border: 2px solid #10b981 !important;
+    border-radius: 12px !important;
+    font-size: 22px !important;
+    cursor: pointer !important;
+    z-index: 1001 !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #10b981 !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+  }
+  
+  .hamburger:hover,
+  .mobile-menu-btn:hover,
+  button.hamburger:hover,
+  button.mobile-menu-btn:hover {
+    background: var(--accent, #10b981) !important;
+    color: #fff !important;
+    border-color: var(--accent, #10b981) !important;
+  }
+  
+  /* Ensure hamburger shows in nav-wrapper */
+  .nav-wrapper .hamburger,
+  .nav-wrapper .mobile-menu-btn {
+    display: flex !important;
+    position: absolute !important;
+    top: 16px !important;
+    right: 16px !important;
+    z-index: 1002 !important;
+    background: #ffffff !important;
+    border: 2px solid #10b981 !important;
+    color: #10b981 !important;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2) !important;
+  }
+  
+  .nav-wrapper .hamburger:hover,
+  .nav-wrapper .mobile-menu-btn:hover {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    transform: scale(1.05) !important;
+  }
+}
+
+@media (min-width: 993px) {
+  .mobile-menu,
+  .mobile-menu-btn {
+    display: none !important;
+  }
+}
+
+/* Base Mobile Styles */
+@media (max-width: 768px) {
+  /* Container improvements */
+  .container {
+    padding: 0 12px;
+    max-width: 100%;
+  }
+  
+  /* Header mobile optimization */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Topbar mobile layout */
+  .topbar {
+    padding: 8px 0;
+  }
+  
+  .topbar-content {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .contact-info {
+    gap: 6px;
+    overflow: hidden;
+  }
+  
+  .contact-item {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+  
+  .contact-item span {
+    display: none;
+  }
+  
+  .social-links {
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  
+  .social-link {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  /* Navigation wrapper mobile layout */
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+    position: relative;
+  }
+  
+  .nav-wrapper .logo {
+    align-self: center;
+    order: 1;
+  }
+  
+  .nav-wrapper .hamburger,
+  .nav-wrapper .mobile-menu-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    order: 0;
+    z-index: 10;
+    display: flex !important;
+  }
+  
+  .nav-wrapper .search {
+    order: 2;
+    width: 100%;
+    margin: 8px 0 0 0;
+    max-width: none;
+  }
+  
+  .nav-wrapper .actions {
+    order: 3;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  /* Button improvements for mobile */
+  .btn {
+    min-height: 48px;
+    padding: 14px 18px;
+    font-size: 15px;
+    touch-action: manipulation;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  
+  .btn.icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 12px;
+  }
+  
+  /* Product card buttons */
+  .product-card .btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    margin-top: 8px;
+  }
+  
+  /* Cart and wishlist buttons */
+  .btn-primary,
+  .add-to-cart-btn {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+  }
+  
+  .btn-primary:hover,
+  .add-to-cart-btn:hover {
+    background: #059669 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4) !important;
+  }
+  
+  .btn-outline,
+  .wishlist-btn {
+    background: transparent !important;
+    color: #10b981 !important;
+    border: 2px solid #10b981 !important;
+  }
+  
+  .btn-outline:hover,
+  .wishlist-btn:hover {
+    background: #10b981 !important;
+    color: #ffffff !important;
+  }
+  
+  /* Bottom navigation improvements */
+  .bottom-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    padding: 8px 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bottom-nav a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 4px;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .bottom-nav a:hover,
+  .bottom-nav a.active {
+    color: #10b981;
+    transform: translateY(-2px);
+  }
+  
+  .bottom-nav a i {
+    font-size: 20px;
+    margin-bottom: 2px;
+  }
+  
+  /* Floating action buttons - Fix overlapping */
+  .floating-btn,
+  .whatsapp-float,
+  .chat-float,
+  .support-float {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  /* WhatsApp floating button - Override existing styles */
+  .whatsapp-float {
+    bottom: 90px !important;
+    right: 20px !important;
+    background: #25d366 !important;
+    color: #ffffff !important;
+    z-index: 1002 !important;
+    width: 56px !important;
+    height: 56px !important;
+  }
+  
+  /* Chat/Support floating button */
+  .chat-float,
+  .support-float {
+    bottom: 150px !important;
+    right: 20px !important;
+    background: #3b82f6 !important;
+    color: #ffffff !important;
+    z-index: 1001 !important;
+  }
+  
+  /* General floating button */
+  .floating-btn {
+    bottom: 210px !important;
+    right: 20px !important;
+    background: #10b981 !important;
+    color: #ffffff !important;
+    z-index: 1000 !important;
+  }
+  
+  /* Ensure proper spacing between floating buttons */
+  .floating-buttons-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 1003;
+  }
+  
+  .floating-btn:hover,
+  .whatsapp-float:hover,
+  .chat-float:hover,
+  .support-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Ensure bottom nav doesn't overlap with floating buttons */
+  .site-content {
+    padding-bottom: 80px;
+    margin-bottom: 0;
+  }
+  
+  /* Footer mobile improvements */
+  .site-footer {
+    padding-bottom: 80px; /* Space for bottom navigation */
+    margin-bottom: 0;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .footer-brand {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .footer-links {
+    margin-bottom: 16px;
+  }
+  
+  .footer-links h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  
+  .footer-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-menu li {
+    margin: 0;
+  }
+  
+  .footer-menu a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--text, #374151);
+    background: var(--bg-soft, #f9fafb);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .footer-menu a:hover {
+    background: var(--accent, #10b981);
+    color: #ffffff;
+  }
+  
+  .footer-newsletter {
+    text-align: center;
+    padding: 20px 16px;
+    background: var(--bg-soft, #f9fafb);
+    border-radius: 16px;
+    margin: 20px 0;
+  }
+  
+  .footer-newsletter h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .footer-newsletter p {
+    font-size: 13px;
+    margin-bottom: 16px;
+    color: var(--muted, #6b7280);
+  }
+  
+  .newsletter-form .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .newsletter-form input {
+    padding: 12px 16px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 12px;
+    font-size: 14px;
+  }
+  
+  .newsletter-form button {
+    padding: 12px 20px;
+    background: var(--accent, #10b981);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  
+  /* Form improvements */
+  input, select, textarea {
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px 16px;
+  }
+  
+  /* Grid layouts for mobile */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  /* Product cards mobile optimization - Fix overlapping */
+  .product-card {
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .product-card .image {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .product-card .content {
+    padding: 16px;
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+  }
+  
+  /* Fix product card actions layout */
+  .product-card .product-actions {
+    position: relative;
+    z-index: 3;
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .product-card .btn {
+    flex: 1;
+    padding: 12px 8px;
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+    position: relative;
+    z-index: 4;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  
+  /* Specific button styling */
+  .product-card .btn-outline {
+    border: 1px solid #10b981;
+    color: #10b981;
+    background: transparent;
+  }
+  
+  .product-card .btn-primary {
+    background: #10b981;
+    color: #ffffff;
+    border: none;
+  }
+  
+  /* Remove floating elements that cause overlap */
+  .product-card .floating-elements,
+  .product-card .wishlist-overlay,
+  .product-card .cart-overlay {
+    display: none;
+  }
+  
+  /* Price display improvements */
+  .product-card .price-info {
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .product-card .current-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #10b981;
+  }
+  
+  .product-card .original-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #6b7280;
+  }
+  
+  /* Typography improvements */
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+  
+  /* Spacing improvements */
+  .section {
+    padding: 30px 0;
+  }
+}
+
+/* Admin Pages Mobile Optimization */
+@media (max-width: 768px) {
+  /* Admin header */
+  .admin-header {
+    padding: 16px 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  /* Admin navigation */
+  .admin-nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .admin-nav a {
+    padding: 12px 16px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  /* Admin content */
+  .admin-content {
+    padding: 16px 12px;
+  }
+  
+  /* Admin tables */
+  .admin-table {
+    font-size: 14px;
+  }
+  
+  .admin-table th,
+  .admin-table td {
+    padding: 8px 6px;
+  }
+  
+  /* Admin forms */
+  .admin-form .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .admin-form label {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .admin-form input,
+  .admin-form select,
+  .admin-form textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  /* Settings page mobile optimization */
+  .settings-container {
+    padding: 0 12px;
+  }
+  
+  .settings-hero {
+    padding: 20px 16px;
+    margin: 0 -12px 20px -12px;
+    border-radius: 0;
+  }
+  
+  .settings-hero h1 {
+    font-size: 20px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .settings-hero .hero-actions {
+    position: static;
+    transform: none;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .hero-btn {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  /* Settings tabs mobile */
+  .settings-tabs-container {
+    flex-direction: column;
+  }
+  
+  .settings-sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .tabs-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 6px;
+    padding: 8px;
+  }
+  
+  .tab-item {
+    padding: 12px 8px;
+    text-align: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .tab-item i {
+    font-size: 18px;
+  }
+  
+  .tab-item .tab-label {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+  
+  /* Settings content */
+  .settings-main {
+    margin-left: 0;
+  }
+  
+  .settings-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .settings-card {
+    margin-bottom: 16px;
+    border-radius: 12px;
+  }
+  
+  .card-header {
+    padding: 16px;
+  }
+  
+  .card-body {
+    padding: 16px;
+  }
+  
+  /* Action bar mobile */
+  .action-bar {
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px -12px 0 -12px;
+    border-radius: 16px 16px 0 0;
+    padding: 20px 16px;
+    position: sticky;
+    bottom: 0;
+  }
+  
+  .action-bar-left,
+  .action-bar-right {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .btn-save,
+  .btn-secondary {
+    flex: 1;
+    min-width: 140px;
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px;
+  }
+  
+  .nav-wrapper {
+    padding: 8px;
+  }
+  
+  .contact-info {
+    gap: 4px;
+  }
+  
+  .social-links {
+    gap: 2px;
+  }
+  
+  .social-link {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .tabs-nav {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 4px;
+  }
+  
+  .tab-item {
+    padding: 10px 6px;
+  }
+  
+  .tab-item i {
+    font-size: 16px;
+  }
+  
+  .tab-item .tab-label {
+    font-size: 10px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  .tab-item,
+  .contact-item,
+  .social-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .btn:hover,
+  .tab-item:hover,
+  .contact-item:hover,
+  .social-link:hover {
+    transform: none;
+  }
+  
+  /* Add active states for touch feedback */
+  .btn:active,
+  .tab-item:active,
+  .contact-item:active,
+  .social-link:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn {
+    border: 2px solid currentColor;
+  }
+  
+  .tab-item {
+    border: 1px solid currentColor;
+  }
+  
+  .settings-card {
+    border: 2px solid var(--border);
+  }
+}
